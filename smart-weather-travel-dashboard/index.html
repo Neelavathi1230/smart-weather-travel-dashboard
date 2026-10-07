@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Real-time weather with smart travel recommendations.">
+  <title>Smart Weather & Travel</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="theme-default">
+  <header class="header">
+    <a class="logo" href="#top">🌍 Smart Weather <span>&amp; Travel</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#current">Weather</a>
+      <a href="#forecast">Forecast</a>
+      <a href="#travel">Travel</a>
+    </nav>
+  </header>
+
+  <main id="top" class="container">
+    <section class="hero">
+      <h1>Plan your trip with the weather</h1>
+      <p>Real-time weather, a 5-day forecast and travel tips for any city.</p>
+      <form id="searchForm" class="search" novalidate>
+        <label for="cityInput" class="sr-only">City name</label>
+        <input id="cityInput" type="text" placeholder="Enter city name..." autocomplete="off">
+        <button id="searchBtn" type="submit">Search</button>
+      </form>
+    </section>
+
+    <p id="welcome" class="message">Search for a city to discover its weather and travel recommendations.</p>
+    <div id="loader" class="loader" hidden role="status">
+      <div class="spinner"></div><p>Fetching weather information...</p>
+    </div>
+    <p id="error" class="message error" role="alert" hidden></p>
+
+    <div id="results" hidden>
+      <section id="current" class="card current">
+        <div class="current-main">
+          <h2 id="cityName"></h2>
+          <p id="localDate" class="muted"></p>
+          <div class="temp-row"><span id="weatherIcon" class="big-icon" aria-hidden="true"></span><span id="temperature" class="temp"></span></div>
+          <p id="condition" class="condition"></p>
+        </div>
+        <div class="details" id="details"></div>
+      </section>
+
+      <section id="forecast">
+        <h2 class="section-title">5-Day Forecast</h2>
+        <div id="forecastGrid" class="forecast-grid"></div>
+      </section>
+
+      <section id="travel" class="card travel">
+        <h2 class="section-title">Smart Travel Suggestions</h2>
+        <div class="travel-grid">
+          <div>
+            <p id="travelHeadline" class="headline"></p>
+            <div class="lists">
+              <div><h3>Recommended</h3><ul id="recList"></ul></div>
+              <div><h3>Carry</h3><ul id="carryList"></ul></div>
+            </div>
+          </div>
+          <div class="score-box">
+            <h3>Travel Suitability</h3>
+            <div id="stars" class="stars" aria-hidden="true"></div>
+            <p id="scoreValue" class="score"></p>
+            <p id="scoreLabel" class="score-label"></p>
+            <div class="bar"><div id="scoreBar"></div></div>
+            <p class="note">Application-generated recommendation, not an official safety rating.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">Data by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> · Smart Weather &amp; Travel Dashboard</footer>
+
+  <script src="js/weather-api.js"></script>
+  <script src="js/travel-suggestions.js"></script>
+  <script src="js/weather-ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
